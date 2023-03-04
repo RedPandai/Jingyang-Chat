@@ -1,0 +1,334 @@
+.formBackground {
+  background-color: #caefd1;
+  height: 100vh;
+  box-sizing: border-box;
+  user-select: none;
+}
+a {
+  text-decoration: none;
+  color: #10b0b9;
+}
+a:hover {
+  color: rgb(135, 203, 122);
+}
+.formContainer {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 0rem;
+  top: 10rem;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.formWrapper {
+  width: 23rem;
+  height: fit-content;
+  background-color: rgb(252, 252, 252);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  padding: 0 1em;
+  gap: 5px;
+  border-radius: 1em;
+}
+.login{
+    height:23rem;
+    justify-content: space-around;
+}
+
+
+.formWrapper .logo {
+  color: #3f3554;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.formWrapper .title {
+  color: #725e35;
+  font-size: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+form input {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #3f3554;
+  border: none;
+  border-bottom: 1.3px solid rgb(122, 99, 24);
+  outline: none;
+  padding-bottom: 0.5em;
+}
+
+form input::placeholder {
+  color: #aaa;
+}
+
+form input:focus {
+  border-color: rgb(216, 201, 157);
+  background-color: rgb(250, 232, 171);
+}
+
+form button {
+  font-size: 0.9em;
+  padding: 0.6em;
+  border: none;
+  border-radius: 2em;
+  outline: none;
+  background-color: rgb(247, 211, 111);
+  cursor: pointer;
+}
+
+form button:hover:not([disabled]) {
+  background-color: #10b0b9;
+  color: white;
+}
+
+.formWrapper p {
+  color: #3f3554;
+  font-size: 13px;
+  margin-top: 10px;
+}
+form label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #625480;
+  font-size: 14px;
+  cursor: pointer;
+}
+form img {
+  width: 40px;
+}
+.form-footer {
+  margin-bottom: 10px;
+}
+.errorMessages {
+  align-self: flex-start;
+  color: red;
+  font-size: smaller;
+  font-weight: lighter;
+}
+
+/* rabbit */
+.rabbit {
+  position: absolute;
+  left: 0;
+  top: -2rem;
+  right: 0;
+  bottom: 0;
+  user-select: none;
+}
+.rabbitbody {
+  background-color: #fcffe9;
+  width: 20em;
+  height: 27em;
+  border-radius: 10em;
+  position: absolute;
+  left: -4em;
+  top: -12em;
+  z-index: -1;
+}
+
+.ear-left {
+  background-color: #f7f8f0;
+  width: 4em;
+  height: 11em;
+  position: absolute;
+  top: -18em;
+  left: -3em;
+  border-radius: 10em;
+  transform: rotate(-10deg);
+  z-index: -1;
+}
+
+/* focused animate */
+.earLFocused {
+  left: -2em;
+  top: -17em;
+  transform: rotate(0deg);
+  transition: 1s ease-in-out;
+}
+.earLNormal {
+  left: -3em;
+  top: -18em;
+  transition: 1s ease-in-out;
+}
+
+.ear-left:before {
+  content: "";
+  background-color: #f9c28e;
+  width: 3em;
+  height: 8em;
+  position: absolute;
+  top: 1em;
+  left: 0.5em;
+  border-radius: 40%;
+}
+
+.ear-right {
+  background-color: #f7f8f0;
+  width: 4em;
+  height: 11em;
+  position: absolute;
+  top: -19em;
+  left: 10em;
+  border-radius: 10em;
+  transform: rotate(20deg);
+  z-index: -2;
+}
+
+/* focused animate */
+.earRFocused {
+  right: 12em;
+  top: -18em;
+  transform: rotate(10deg);
+  transition: 1s ease-in-out;
+}
+.earRNormal {
+  left: 10em;
+  top: -19em;
+  transition: 1s ease-in-out;
+}
+.ear-right:before {
+  content: "";
+  background-color: #f9c28e;
+  width: 3em;
+  height: 8em;
+  position: absolute;
+  top: 1em;
+  left: 0.5em;
+  border-radius: 40%;
+}
+
+.rabbiteye-left {
+  background-color: black;
+  width: 1.3em;
+  height: 1.5em;
+  position: absolute;
+  border-radius: 50%;
+  top: 3.5em;
+  left: 4.5em;
+}
+
+.rabbiteye-right {
+  background-color: black;
+  width: 1.3em;
+  height: 1.5em;
+  position: absolute;
+  border-radius: 50%;
+  top: 3.5em;
+  right: 5em;
+}
+
+.rabbitnose {
+  background-color: #fde0d9;
+  width: 3em;
+  height: 1em;
+  position: absolute;
+  border-radius: 50%;
+  top: 4.5em;
+  right: 8.5em;
+}
+
+.rabbitmouth {
+  background-color: #fde0d9;
+  width: 5em;
+  height: 2em;
+  position: absolute;
+  border-radius: 50% 50% 0% 50%;
+  top: 6.5em;
+  right: 7.5em;
+}
+/* focused animate */
+.mouthFocused {
+  width: 4em;
+  border-radius: 50% 50% 50% 50%;
+  top: 6.5em;
+  right: 7.5em;
+  transition: 0.7s ease-in-out;
+}
+
+.mouthNormal {
+  width: 5em;
+  border-radius: 50% 50% 0% 50%;
+  transition: 0.5s ease-in-out;
+}
+
+.rabbitmouth:before {
+  content: "";
+  background-color: white;
+  width: 2em;
+  height: 1em;
+  position: absolute;
+  top: 0em;
+  left: 1.5em;
+  border-radius: 20%;
+}
+
+.rabbithand-left {
+  background-color: #fff2cc;
+  width: 6.5em;
+  height: 5.5em;
+  position: absolute;
+  top: 9em;
+  left: -5em;
+  border-radius: 20%;
+  z-index: 2;
+  border-radius: 40% 30% 30% 80%;
+}
+/* focused animate */
+.handLFocused {
+  left: 1em;
+  top: 2.2em;
+  height: 8.5em;
+  transform: rotate(200deg);
+  transition: 0.5s;
+}
+.handLNormal {
+  left: -5em;
+  top: 9em;
+  transition: 0.3s;
+}
+
+.rabbithand-right {
+  background-color: #fff2cc;
+  width: 6.5em;
+  height: 5.5em;
+  position: absolute;
+  top: 9em;
+  right: -4em;
+  border-radius: 20%;
+  z-index: 2;
+  border-radius: 30% 30% 80% 40%;
+}
+
+/* focused animate */
+.handRFocused {
+  right: 0.9em;
+  top: 2.2em;
+  height: 8.5em;
+  transform: rotate(-200deg);
+  transition: 0.5s;
+}
+.handRNormal {
+  right: -4em;
+  top: 9em;
+  transition: 0.3s;
+}
