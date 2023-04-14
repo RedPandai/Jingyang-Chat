@@ -28,12 +28,12 @@ function Login() {
           <span className="logo">Jingyang Chat</span>
           <span className="title">Login</span>
           <form onSubmit={handleSubmit}>
-            <input type="email" placeholder="enter email" />
+            <input type="email" placeholder="Enter Email Address" />
             <input
               type="password"
               name="password"
               autoComplete="on"
-              placeholder="enter password"
+              placeholder="Enter Password"
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
             />

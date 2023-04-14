@@ -10,7 +10,7 @@ import ProgressBar from "../components/ProgressBar";
 import validateForm from "../utili/validateForm";
 
 import "./Account.css";
-import add from "../images/image.png";
+import add from "/images/image.png";
 
 function Account() {
   const [err, setErr] = useState(false);
