@@ -5,50 +5,64 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 
 function Chats() {
-  //fetch chats
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState({}); // object, not array
   const { currentUser } = useContext(AuthContext);
-  const { dispatch,data } = useContext(ChatContext);
+  const { dispatch, data } = useContext(ChatContext);
 
   useEffect(() => {
-    const getChats = () => {
-      //wrap in a function in case it has no chats at the very beginning
-      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-        setChats(doc.data());
-      });
-      return () => unsub(); //clean up this after first render
-    };
+    if (!currentUser?.uid) {
+      setChats({});
+      return;
+    }
 
-    currentUser.uid && getChats();
-  }, [currentUser.uid]);
+    const ref = doc(db, "userChats", currentUser.uid);
+    const unsub = onSnapshot(
+      ref,
+      (snap) => {
+        // if doc doesn't exist yet, use {}
+        setChats(snap.exists() ? snap.data() ?? {} : {});
+      },
+      () => setChats({})
+    );
+
+    return unsub; // proper cleanup
+  }, [currentUser?.uid]);
 
   const handleSelect = (u) => {
-    dispatch({ type: "CHANGE_USER", payload: u });
+    if (u) dispatch({ type: "CHANGE_USER", payload: u });
   };
+
+  const entries = Object.entries(chats || {}).sort((a, b) => {
+    const aDate = a[1]?.date?.toMillis ? a[1].date.toMillis() : a[1]?.date ?? 0;
+    const bDate = b[1]?.date?.toMillis ? b[1].date.toMillis() : b[1]?.date ?? 0;
+    return bDate - aDate;
+  });
 
   return (
     <div className="chats">
-      {Object.entries(chats)
-        ?.sort((a, b) => b[1].date - a[1].date)
-        .map((chat) => (
+      {entries.map(([id, val]) => {
+        const uid = val?.userInfo?.uid;
+        const focused = uid && data?.user?.uid && uid === data.user.uid;
+        return (
           <div
-            className={`userChat ${ chat[1].userInfo.uid===data.user.uid && 'userChatFocused'}`}
-            // to enable the user focused background
-            key={chat[0]}
-            onClick={() => handleSelect(chat[1].userInfo)}
+            className={`userChat ${focused ? "userChatFocused" : ""}`}
+            key={id}
+            onClick={() => handleSelect(val?.userInfo)}
           >
             <img
               className="avatar"
-              src={chat[1].userInfo.photoURL}
+              src={val?.userInfo?.photoURL || "/placeholder-avatar.png"}
               alt="avatar"
             />
             <div className="userChatInfo">
-              <span>{chat[1].userInfo.displayName}</span>
-              <p>{chat[1].lastMessage?.text}</p>
+              <span>{val?.userInfo?.displayName || "Unknown user"}</span>
+              <p>{val?.lastMessage?.text || ""}</p>
             </div>
           </div>
-        ))}
+        );
+      })}
     </div>
   );
 }
+
 export default Chats;
